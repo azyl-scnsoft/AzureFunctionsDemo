@@ -1,13 +1,11 @@
 using System;
 using System.Threading;
 
-public static void Run(string input, TraceWriter log)
+public static void Run(string myQueueItem, TraceWriter log)
 {
-    log.Info($"C# manually triggered function called with input: {input}");
+    log.Info($"C# manually triggered function called with input: {myQueueItem}");
 	
 	log.Info(GetEnvironmentVariable("WEBSITE_INSTANCE_ID"));
-	
-	Thread.Sleep(Int32.MaxValue);
 }
 
 public static string GetEnvironmentVariable(string name)
