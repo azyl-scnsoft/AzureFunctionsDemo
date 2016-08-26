@@ -1,9 +1,11 @@
 using System;
 using System.Threading;
 
-public static void Run(string myQueueItem, TraceWriter log)
+public static async Task Run(string myQueueItem, TraceWriter log)
 {
     log.Info($"C# manually triggered function called with input: {myQueueItem}");
+	
+	await Task.Delay(10000);
 	
 	log.Info(GetEnvironmentVariable("WEBSITE_INSTANCE_ID"));
 }
