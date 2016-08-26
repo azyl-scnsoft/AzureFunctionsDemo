@@ -7,7 +7,7 @@ public static void Run(string input, TraceWriter log)
 	
 	log.Info(GetEnvironmentVariable("WEBSITE_INSTANCE_ID"));
 	
-	Thread.Sleep(Int.MaxValue);
+	Thread.Sleep(Int32.MaxValue);
 }
 
 public static string GetEnvironmentVariable(string name)
