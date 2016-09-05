@@ -5,8 +5,8 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "topicName": "taskcompletiontopic",
-      "subscriptionName": "ServiceBusMeetupDemo",
-      "connection": "ServiceBusDashboard",
+      "subscriptionName": "taskcompletiontwiliosub",
+      "connection": "ServiceBusMeetupDemo",
       "accessRights": "Manage"
     },
     {
