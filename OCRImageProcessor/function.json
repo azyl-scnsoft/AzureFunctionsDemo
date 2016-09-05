@@ -1,0 +1,42 @@
+{
+  "bindings": [
+    {
+      "type": "queueTrigger",
+      "name": "task",
+      "queueName": "ocr-tasks-new",
+      "connection": "alexzdemomeetupstorage_STORAGE",
+      "direction": "in"
+    },
+    {
+      "type": "blob",
+      "name": "image",
+      "path": "ocr-tasks/{Id}",
+      "connection": "alexzdemomeetupstorage_STORAGE",
+      "direction": "in"
+    },
+    {
+      "type": "table",
+      "name": "tasksTable",
+      "tableName": "OCRTaskInfo",
+      "connection": "alexzdemomeetupstorage_STORAGE",
+      "direction": "in"
+    },
+    {
+      "type": "blob",
+      "name": "taskResult",
+      "path": "ocr-tasks-recognized/{ImageFileName}-{Id}.txt",
+      "connection": "alexzdemomeetupstorage_STORAGE",
+      "direction": "inout"
+    },
+    {
+      "type": "serviceBus",
+      "name": "taskResultMessages",
+      "topicName": "taskcompletiontopic",
+      "connection": "ServiceBusMeetupDemo",
+      "subscriptionName": "taskcompletionsub",
+      "accessRights_": "Manage",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

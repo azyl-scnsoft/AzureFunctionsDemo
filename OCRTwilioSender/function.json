@@ -1,0 +1,20 @@
+{
+  "bindings": [
+    {
+      "name": "task",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "topicName": "taskcompletiontopic",
+      "subscriptionName": "ServiceBusMeetupDemo",
+      "connection": "ServiceBusDashboard",
+      "accessRights": "Manage"
+    },
+    {
+      "type": "twilioSms",
+      "name": "message",
+      "from": "+16692310821",
+      "direction": "out"
+    }
+  ],
+  "disabled": true
+}

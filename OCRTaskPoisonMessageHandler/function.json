@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "name": "task",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "ocr-tasks-new-poison",
+      "connection": "alexzdemomeetupstorage_STORAGE"
+    },
+    {
+      "type": "serviceBus",
+      "name": "taskMessage",
+      "topicName": "taskcompletiontopic",
+      "connection": "ServiceBusMeetupDemo",
+      "accessRights_": "Manage",
+      "direction": "out"
+    },
+    {
+      "type": "table",
+      "name": "taskTable",
+      "tableName": "OCRTaskInfo",
+      "connection": "alexzdemomeetupstorage_STORAGE",
+      "direction": "in"
+    }
+  ],
+  "disabled": true
+}

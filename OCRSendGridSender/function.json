@@ -1,0 +1,20 @@
+{
+  "bindings": [
+    {
+      "type": "serviceBusTrigger",
+      "name": "task",
+      "topicName": "taskcompletiontopic",
+      "subscriptionName": "taskcompletionsendgridsub",
+      "connection": "ServiceBusMeetupDemo",
+      "accessRights": "Manage",
+      "direction": "in"
+    },
+    {
+      "type": "sendGrid",
+      "name": "message",
+      "from": "noreply@ocrservice.com",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
