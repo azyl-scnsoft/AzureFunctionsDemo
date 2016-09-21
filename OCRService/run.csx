@@ -17,7 +17,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req,
     var fileName = GetFromHeaders(req, "filename");
     var phone = GetFromHeaders(req, "phone");
 
-    if (image == null || string.IsNullOrWhiteSpace(fileName))
+    if (image == null || image.Length == 0 || string.IsNullOrWhiteSpace(fileName))
     {
         return req.CreateResponse(HttpStatusCode.BadRequest);
     }
@@ -27,7 +27,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req,
     var task = new TaskDetails(id)
     {
         ImageFileName = fileName,
-        ImageTextLanguage = language,
         UserEmail = email.ToLowerInvariant(),
         UserPhone = phone,
         CreateTime = DateTimeOffset.UtcNow,
