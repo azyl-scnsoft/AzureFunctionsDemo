@@ -6,9 +6,9 @@
 
 using System;
 using System.Text;
+using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 public static async Task Run(
     TaskDetails task,
@@ -48,7 +48,6 @@ private static async Task<Rootobject> RecognizeAsync(Stream image, TaskDetails t
     {
         var form = new MultipartFormDataContent();
         form.Add(new StringContent(apiKey), "apikey");
-        form.Add(new StringContent(task.ImageTextLanguage), "language");
         form.Add(new ByteArrayContent(imageData, 0, imageData.Length), "image", task.ImageFileName);
 
         var response = await client.PostAsync("https://api.ocr.space/Parse/Image", form);

@@ -22,7 +22,6 @@ public class TaskDetails : TableEntity
     public string UserEmail { get; set; }
     public string UserPhone { get; set; }
     public string ImageFileName { get; set; }
-    public string ImageTextLanguage { get; set; }
     public DateTimeOffset CreateTime { get; set; }
     public DateTimeOffset UpdateTime { get; set; }
     public string ResultUri { get; set; }

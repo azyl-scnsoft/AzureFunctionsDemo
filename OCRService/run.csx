@@ -13,7 +13,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req,
     TraceWriter log)
 {
     var image = await req.Content.ReadAsStreamAsync();
-    var language = GetFromHeaders(req, "language");
     var email = GetFromHeaders(req, "email");
     var fileName = GetFromHeaders(req, "filename");
     var phone = GetFromHeaders(req, "phone");
