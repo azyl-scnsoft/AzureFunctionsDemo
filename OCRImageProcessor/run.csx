@@ -10,12 +10,11 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
 
-public static async Task Run(
+public static async Task<TaskDetails> Run(
     TaskDetails task,
     Stream image,
     CloudTable tasksTable,
     ICloudBlob taskResult,
-    IAsyncCollector<TaskDetails> taskResultMessages,
     TraceWriter log)
 {
     var apiResult = await RecognizeAsync(image, task);
@@ -34,8 +33,6 @@ public static async Task Run(
     task.ETag = "*";
     var operation = TableOperation.Replace(task);
     await tasksTable.ExecuteAsync(operation);
-
-    await taskResultMessages.AddAsync(task);
 }
 
 private static async Task<Rootobject> RecognizeAsync(Stream image, TaskDetails task)

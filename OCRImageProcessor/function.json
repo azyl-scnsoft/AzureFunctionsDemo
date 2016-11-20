@@ -30,7 +30,7 @@
     },
     {
       "type": "serviceBus",
-      "name": "taskResultMessages",
+      "name": "$return",
       "topicName": "taskcompletiontopic",
       "connection": "ServiceBusMeetupDemo",
       "subscriptionName": "taskcompletionsub",

@@ -1,42 +1,46 @@
 #load "..\OCRShared\TaskDetails.csx"
 #load "..\OCRShared\TaskStatus.csx"
-#r "SendGridMail"
+#r "SendGrid"
 
 using System;
-using SendGrid;
-using Microsoft.WindowsAzure.Storage.Blob;
+using SendGrid.Helpers.Mail;
 
-public static void Run(TaskDetails task, out SendGridMessage message, TraceWriter log)
+public static Mail Run(TaskDetails task, TraceWriter log)
 {
     if(string.IsNullOrWhiteSpace(task.UserEmail))
     {
-        message = null;
-        return;
+        return null;
     }
-    
+
+    var message = new Mail();
+    Content content = new Content
+    {
+        Type = "text/plain"
+    };
+
     string subject = "";
     string text = "";
 
     var taskStatus = task.GetStatus();
     if (taskStatus == TaskStatus.Completed)
     {
-        subject = string.Format("Text recognition for image {0} has finished!", task.ImageFileName);
-        text = string.Format("Text recognition for your image {0} has finished successfully! Please visit the next link to get the results: {1}", task.ImageFileName, task.ResultUri);
+        message.Subject = string.Format("Text recognition for image {0} has finished!", task.ImageFileName);
+        content.Value = string.Format("Text recognition for your image {0} has finished successfully! Please visit the next link to get the results: {1}", task.ImageFileName, task.ResultUri);
     }
     else if (taskStatus == TaskStatus.Failed)
     {
-        subject = string.Format("Text recognition for image {0} has failed!", task.ImageFileName);
-        text = string.Format("Sorry, we could not process your image {0}. Please, try again later.", task.ImageFileName);
+        message.Subject = string.Format("Text recognition for image {0} has failed!", task.ImageFileName);
+        content.Value = string.Format("Sorry, we could not process your image {0}. Please, try again later.", task.ImageFileName);
     }
     else
     {
-        message = null;
-        return;
+        return null;
     }
-    message = new SendGridMessage()
-    {
-        Subject = subject,
-        Text = text
-    };
-    message.AddTo(task.UserEmail);
+
+    var personalization = new Personalization();
+    personalization.AddTo(new Email(task.UserEmail));
+    message.AddPersonalization(personalization);
+    message.AddContent(content);
+
+    return message;
 }

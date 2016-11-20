@@ -3,16 +3,15 @@
 #load "..\OCRShared\TaskStatus.csx"
 
 using System;
-using System.Threading.Tasks;
 using Twilio;
 
-public static void Run(TaskDetails task, out SMSMessage message, TraceWriter log)
+public static SMSMessage Run(TaskDetails task, TraceWriter log)
 {
     string body = task.GetStatus() == TaskStatus.Completed
         ? string.Format("Text recognition for image {0} has finished successfully.", task.ImageFileName)
         : string.Format("Text recognition for image {0} has failed.", task.ImageFileName);
         
-    message = string.IsNullOrWhiteSpace(task.UserPhone)
+    return string.IsNullOrWhiteSpace(task.UserPhone)
     ? null
     : new SMSMessage
     {

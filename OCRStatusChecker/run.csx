@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.WindowsAzure.Storage.Table;
 
-public static HttpResponseMessage Run(TaskId taskId,  HttpRequestMessage req, TaskDetails task, TraceWriter log)
+public static HttpResponseMessage Run(TaskId taskId, HttpRequestMessage req, TaskDetails task, TraceWriter log)
 {
     return task == null
         ? req.CreateResponse(HttpStatusCode.NotFound)

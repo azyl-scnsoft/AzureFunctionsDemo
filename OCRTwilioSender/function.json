@@ -11,7 +11,7 @@
     },
     {
       "type": "twilioSms",
-      "name": "message",
+      "name": "$return",
       "from": "+16692310821",
       "direction": "out"
     }
