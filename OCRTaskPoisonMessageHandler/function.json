@@ -5,7 +5,7 @@
       "type": "queueTrigger",
       "direction": "in",
       "queueName": "ocr-tasks-new-poison",
-      "connection": "alexzdemomeetupstorage_STORAGE"
+      "connection": "ocrdatastorage-extended"
     },
     {
       "type": "serviceBus",
@@ -19,7 +19,7 @@
       "type": "table",
       "name": "taskTable",
       "tableName": "OCRTaskInfo",
-      "connection": "alexzdemomeetupstorage_STORAGE",
+      "connection": "ocrdatastorage-extended",
       "direction": "in"
     }
   ],

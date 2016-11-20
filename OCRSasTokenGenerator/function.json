@@ -15,7 +15,7 @@
       "type": "blob",
       "name": "imageBlobContainer",
       "path": "ocr-tasks",
-      "connection": "alexzdemomeetupstorage_STORAGE",
+      "connection": "ocrdatastorage-extended",
       "direction": "in"
     }
   ],

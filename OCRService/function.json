@@ -15,21 +15,21 @@
       "type": "table",
       "name": "tasks",
       "tableName": "OCRTaskInfo",
-      "connection": "alexzdemomeetupstorage_STORAGE",
+      "connection": "ocrdatastorage-extended",
       "direction": "out"
     },
     {
       "type": "blob",
       "name": "tasksBlobContainer",
       "path": "ocr-tasks",
-      "connection": "alexzdemomeetupstorage_STORAGE",
+      "connection": "ocrdatastorage-extended",
       "direction": "in"
     },
     {
       "type": "queue",
       "name": "taskMessages",
       "queueName": "ocr-tasks-new",
-      "connection": "alexzdemomeetupstorage_STORAGE",
+      "connection": "ocrdatastorage-extended",
       "direction": "out"
     }
   ],
