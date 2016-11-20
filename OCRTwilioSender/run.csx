@@ -7,8 +7,6 @@ using Twilio;
 
 public static SMSMessage Run(TaskDetails task, TraceWriter log)
 {
-
-	
     string body = task.GetStatus() == TaskStatus.Completed
         ? string.Format("Text recognition for image {0} has finished successfully.", task.ImageFileName)
         : string.Format("Text recognition for image {0} has failed.", task.ImageFileName);
