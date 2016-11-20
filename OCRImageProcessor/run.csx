@@ -33,6 +33,8 @@ public static async Task<TaskDetails> Run(
     task.ETag = "*";
     var operation = TableOperation.Replace(task);
     await tasksTable.ExecuteAsync(operation);
+
+    return task;
 }
 
 private static async Task<Rootobject> RecognizeAsync(Stream image, TaskDetails task)
